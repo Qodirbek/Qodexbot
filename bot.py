@@ -11,10 +11,10 @@ COMMUNITY_URL = "https://t.me/QODEX_COIN"
 WEBHOOK_URL = "https://qodexbot.onrender.com/webhook"
 
 bot = Bot(token=TOKEN)
-dp = Dispatcher()
+dp = Dispatcher(bot)
 app = FastAPI()
 
-@dp.message()
+@dp.message_handler(commands=["start"])
 async def start_handler(message: types.Message):
     if message.text == "/start":
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
@@ -27,7 +27,7 @@ async def start_handler(message: types.Message):
 @app.on_event("startup")
 async def on_startup():
     await bot.set_webhook(WEBHOOK_URL)
-    print("🤖 Webhook o‘rnatildi!")
+    logging.info("🤖 Webhook o‘rnatildi!")
 
 @app.post("/webhook")
 async def webhook(update: dict):

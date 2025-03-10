@@ -5,7 +5,7 @@ import asyncio
 import logging
 import os
 
-TOKEN = "8064942614:AAGT-8nE_MmK45WAdv7VCChaK8jo8O1lNzU"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 WEB_APP_URL = "https://qodex-game.onrender.com"
 COMMUNITY_URL = "https://t.me/QODEX_COIN"
 WEBHOOK_URL = "https://qodexbot.onrender.com/webhook"
